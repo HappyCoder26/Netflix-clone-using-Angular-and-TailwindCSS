@@ -1,0 +1,27 @@
+#login-banner {
+    background-color: black;
+    opacity: 1;
+    height: fit-content;
+    width: 100%;
+}
+
+.error-border {
+    border-bottom: 2px solid #e87c03
+}
+
+.error-message {
+    color: #e87c03;
+    margin-top: 4px;
+}
+
+@media (min-width: 768px) {
+    #login-banner {
+        background-image: url("https://assets.nflxext.com/ffe/siteui/vlv3/594f8025-139a-4a35-b58d-4ecf8fdc507c/d3c4e455-f0bf-4003-b7cd-511dda6da82a/IN-en-20240108-popsignuptwoweeks-perspective_alpha_website_large.jpg");
+        background-size: cover;
+        background-position: center;
+        opacity: 1;
+        height: 1050px;
+        width: 100%;
+    }
+    
+}

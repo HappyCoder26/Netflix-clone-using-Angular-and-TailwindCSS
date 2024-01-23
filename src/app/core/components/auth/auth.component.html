@@ -1,0 +1,88 @@
+<div id="login-banner" class="relative">
+
+    <div class="w-[100%] md:bg-gradient-to-b from-black">
+        <img class="w-40 sm:w-44 md:w-48 md:ml-5" src="assets/netflixLogo.png" alt="netflixLogo">
+    </div>
+
+    <div
+        class="md:block md:absolute md:z-10 md:top-[10%] md:left-0 md:right-0 md:mx-auto  md:text-white md:bg-black md:font-semibold md:p-[60px] md:pb-[120px] md:rounded-sm md:opacity-80 md:h-[620px] md:w-[460px]">
+        <div class="flex flex-col gap-8 p-[5vw] md:p-0 md:h-[372px]">
+            <h1 class="text-4xl font-semibold">{{isLoginMode ? 'Sign In' : 'Sign
+                Up'}}</h1>
+            <form [formGroup]="loginSignup" class="inputs flex flex-col gap-4">
+                <div *ngIf="error" class="w-[100%] py-3 rounded-md px-5 text-white text-[15px] font-normal bg-[#e87c03]">
+                    {{error}}
+                </div>
+                <div>
+                    <input formControlName="email"
+                        class="w-[100%] px-5 py-3 rounded-md text-white bg-[#292929] outline-none"
+                        placeholder="Email or phone number" type="email"
+                        [ngClass]="{'error-border':email?.invalid && email?.touched}">
+                    <span *ngIf="email?.hasError('required') && email?.touched" class="error-message text-sm">
+                        Email is required
+                    </span>
+                    <span *ngIf="email?.hasError('email') && email?.touched" class="error-message text-sm">
+                        Please enter a valid email address.
+                    </span>
+                </div>
+                <div>
+                    <input formControlName="password"
+                        class="w-[100%] px-5 py-3 rounded-md text-white bg-[#292929] outline-none"
+                        placeholder="Password" type="password"
+                        [ngClass]="{'error-border':password?.invalid && password?.touched}">
+                    <span *ngIf="password?.hasError('required') && password?.touched" class="error-message text-sm">
+                        Password is required
+                    </span>
+                    <span
+                        *ngIf="(password?.hasError('minlength') || password?.hasError('maxlength')) && password?.touched"
+                        class="error-message text-sm">Your password must contain between 6 and 60 characters.</span>
+                </div>
+            </form>
+            <div>
+                <button *ngIf="isLoading" (click)="onSubmit()" class="w-[100%] py-3 rounded-md flex justify-center items-center bg-[#e50914]"><app-loading-spinner></app-loading-spinner></button>
+                <button *ngIf="!isLoading" (click)="onSubmit()" class="w-[100%] py-3 rounded-md bg-[#e50914]">{{isLoginMode ? 'Sign In' :
+                    'Sign
+                    Up'}}</button>
+                <div class="flex justify-end mt-3">
+                    <h4 class="text-sm hover:underline hover:cursor-default font-light">Need Help?</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-footer text-[#737373] flex flex-col gap-3 p-[5vw] pb-[18vw] border-b border-white-500 md:text-white md:m-0 md:p-0 md:pb-0 md:border-none">
+            <h2 class="text-base font-light -tracking-tighter">New to Netflix?<a (click)="switchMode()"
+                    class="font-medium pl-1 hover:cursor-pointer hover:underline">{{isLoginMode ? 'Sign up' : 'Sign
+                    in'}}
+                    now.</a></h2>
+            <p class="font-light text-sm">This page is protected by Google reCAPTCHA to ensure you're not a bot. <a
+                    href="#" class="text-[#0071eb] font-medium hover:underline">Learn more.</a></p>
+        </div>
+
+    </div>
+
+    <div class="footer block bg-black p-[5vw] h-[35vh] w-[100%] md:h-[230px] md:absolute md:bottom-0 md:left-0 md:p-0 md:pt-14 md:px-40 md:opacity-80">
+        <div class="helpline mb-5 text-[#737373] md:text-white">
+            <p>Questions? Call <a class="hover:underline" href="#">000-800-919-1694</a></p>
+        </div>
+        <div class="flex justify-between text-[#737373] md:text-white">
+            <div class="w-[20%] flex flex-col gap-2 text-sm">
+                <a class="hover:underline" href="#">FAQ</a>
+                <a class="hover:underline" href="#">Cookie Preferences</a>
+            </div>
+
+            <div class="w-[20%] flex flex-col gap-2 text-[#737373] text-sm md:text-white">
+                <a class="hover:underline" href="#">Help Centre</a>
+                <a class="hover:underline" href="#">Corporate Information</a>
+            </div>
+
+            <div class="w-[20%] flex flex-col gap-2 text-[#737373] text-sm md:text-white">
+                <a class="hover:underline" href="#">Terms of Use</a>
+            </div>
+
+            <div class="w-[20%] flex flex-col gap-2 text-[#737373] text-sm md:text-white">
+                <a class="hover:underline" href="#">Privacy</a>
+            </div>
+        </div>
+    </div>
+
+</div>

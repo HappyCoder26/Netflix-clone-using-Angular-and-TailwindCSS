@@ -1,0 +1,25 @@
+<div class="px-0 mt-5 mb-10 md:px-0 md:mt-10 md:mb-15">
+  <p class="font-semibold text-xl my-2 md:text-2xl md:my-3">{{carouselTitle}}</p>
+  <div #swiperContainer class="swiper-container">
+
+    <div class="swiper-wrapper">
+      <ng-container *ngFor="let movie of movies">
+        <div class="swiper-slide">
+          <div class="img-content relative">
+            <img [src]="movie.poster_path | image" alt="movie_poster" />
+            <div class="desc p-2">
+              <span class="text-base flex flex-wrap font-bold">{{movie.original_title}}</span>
+              <p class="text-xs my-2 md:my-3">{{movie.overview | overview:100}}</p>
+              <div class="py-3 absolute w-[90%] bottom-1">
+                <p class="text-xs flex justify-between items-center">
+                  <span class="text-green-500">Vote Average : {{movie.vote_average}}</span>
+                  <i class="ri-arrow-down-s-line text-white text-base"></i>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

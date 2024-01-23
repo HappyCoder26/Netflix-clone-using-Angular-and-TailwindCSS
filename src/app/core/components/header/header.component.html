@@ -1,0 +1,28 @@
+<div class="header sticky top-0 z-10 px-6 h-[72px] bg-[#292929] flex justify-between bg-gradient-to-b from-black">
+    <div class="left-links flex items-center gap-6">
+        <img class="w-[100px] md:w-[100px]" src="assets/netflixLogo.png" alt="netflixLogo">
+        <div class="links hidden lg:flex items-center">
+            <a class="text-sm text-[#fff] mr-4 cursor-pointer" *ngFor="let item of links">{{item}}</a>
+        </div>
+    </div>
+
+    <div class="menu-small-screen text-lg text-white flex items-center lg:hidden">
+        <i class="ri-menu-3-fill"></i>
+    </div>
+
+    <div class="right-links hidden lg:flex items-center gap-4">
+        <div class="right-link-icons flex gap-4 text-white text-sm">
+            <i class="ri-search-line"></i>
+            <a class="cursor-pointer">Children</a>
+            <i class="ri-notification-2-line"></i>
+        </div>
+        <div class="right-welcome flex items-center gap-4 text-white text-sm">
+            <div class="flex items-center">
+                <a class="mr-2 cursor-pointer"><span>Welcome <strong>Happy</strong></span></a>
+                <img class="h-[28px] w-[28px] rounded-full object-cover" src="assets/profile.jpg" alt="">
+            </div>
+            <h5>|</h5>
+            <a class="cursor-pointer text-sm" (click)="onSignOut()">Signout</a>
+        </div>
+    </div>
+</div>
