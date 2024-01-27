@@ -1,7 +1,6 @@
-<div class="main bg-pink-500 w-full h-full">
-    <app-header></app-header>
-    <app-banner [bannerTitle]="(bannerDetails$ | async)?.original_title" [bannerOverview]="(bannerDetails$ | async)?.overview" [key]="(bannerVideo$ | async)?.results[0].key"></app-banner>
-</div>
+<app-header></app-header>
+<app-banner [bannerTitle]="(bannerDetails$ | async)?.original_title"
+    [bannerOverview]="(bannerDetails$ | async)?.overview" [key]="trailerKey"></app-banner>
 <app-carousel [carouselTitle]="'Popular Movies'" [movies]="popularMovies"></app-carousel>
 <app-carousel [carouselTitle]="'Top Rated Movies'" [movies]="topRatedMovies"></app-carousel>
 <app-carousel [carouselTitle]="'Now Playing Movies'" [movies]="nowPlayingMovies"></app-carousel>

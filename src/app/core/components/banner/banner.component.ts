@@ -12,7 +12,7 @@ export class BannerComponent implements OnInit, OnChanges {
   @Input() bannerOverview: string = '';
 
   @Input() key: string = '';
-  videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${this.key}?autoplay=1&mute=1&loop=1&controls=0`)
+  videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${this.key}?autoplay=1&mute=1&loop=1&controls=0&rel=0&hd=1`)
 
 
   constructor(private sanitizer: DomSanitizer) { }

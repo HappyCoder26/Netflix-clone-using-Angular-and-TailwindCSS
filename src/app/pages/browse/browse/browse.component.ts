@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Observable, forkJoin, map, tap } from 'rxjs';
+import { Observable, forkJoin, map, tap, filter } from 'rxjs';
 import { videoData } from 'src/app/shared/models/videoData.interface';
 import { MovieService } from 'src/app/shared/services/movie.service';
 
@@ -10,7 +10,7 @@ import { MovieService } from 'src/app/shared/services/movie.service';
 })
 export class BrowseComponent implements OnInit {
 
-  randomValue!:number;
+  randomValue!: number;
 
   movies: videoData[] = [];
   popularMovies: videoData[] = [];
@@ -21,6 +21,7 @@ export class BrowseComponent implements OnInit {
 
   bannerDetails$ = new Observable<any>();
   bannerVideo$ = new Observable<any>();
+  trailerKey = '';
 
 
   source = [
@@ -36,7 +37,7 @@ export class BrowseComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.randomValue = Math.floor(Math.random() * 19);
+    this.randomValue = Math.floor(Math.random() * 20);
     console.log(this.randomValue);
 
     forkJoin(this.source)
@@ -44,7 +45,7 @@ export class BrowseComponent implements OnInit {
         map(([movies, popularMovies, nowPlayingMovies, tvShows, upcomingMovies, topRatedMovies]) => {
           this.bannerDetails$ = this.movieService.getBannerDetail(popularMovies.results[this.randomValue].id)
           this.bannerVideo$ = this.movieService.getBannerVideo(popularMovies.results[this.randomValue].id)
-          this.seeData();
+          this.getTrailerKey();
           return { movies, popularMovies, nowPlayingMovies, tvShows, upcomingMovies, topRatedMovies }
         }),
       ).subscribe((res: any) => {
@@ -56,19 +57,19 @@ export class BrowseComponent implements OnInit {
         this.topRatedMovies = res.topRatedMovies.results as videoData[];
         console.log(this.popularMovies)
       })
-
-      this.seeData()
-  }
-  
-  seeData()
-  {
-    this.bannerVideo$.subscribe((res:any)=>
-    {
-      console.log(res.results)
-    })
   }
 
-  
+  getTrailerKey() {
+    this.bannerVideo$.pipe(
+      map((data: any) => {
+        return data.results.find((item: any) => { return item.type === 'Trailer' });
+      })
+    ).subscribe((res) => {
+      this.trailerKey = res.key;
+    });
+  }
+
+
 
 
 }
