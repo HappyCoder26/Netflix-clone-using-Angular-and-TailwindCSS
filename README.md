@@ -1,3 +1,8 @@
+
+## Deployed Project
+
+Check out the live version [here](https://happycoder26.github.io/Netflix-clone-using-Angular-and-TailwindCSS/).
+
 # NetflixClone
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.11.
