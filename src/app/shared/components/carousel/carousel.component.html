@@ -4,7 +4,7 @@
 
     <div class="swiper-wrapper">
       <ng-container *ngFor="let movie of movies">
-        <div class="swiper-slide">
+        <div class="swiper-slide" (click)="navigateToMovieDetails(movie)">
           <div class="img-content relative">
             <img [src]="movie.poster_path | image" alt="movie_poster" />
             <div class="desc p-2">

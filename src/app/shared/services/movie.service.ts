@@ -23,6 +23,8 @@ export class MovieService {
 
   constructor(private http:HttpClient) { }
 
+  private localStorageKey = 'movieData';
+
   getMovies() {
     return this.http.get<any>('https://api.themoviedb.org/3/discover/movie', options)
   }
@@ -53,5 +55,20 @@ export class MovieService {
 
   getBannerDetail(id: number) {
     return this.http.get(`https://api.themoviedb.org/3/movie/${id}`, options);
+  }
+
+  setMovieDetails(movieData:any) : void
+  {
+    localStorage.setItem(this.localStorageKey, JSON.stringify(movieData));
+  }
+
+  getMovieDetails()
+  {
+    const movieData =  localStorage.getItem(this.localStorageKey);
+    return movieData ? JSON.parse(movieData) : null;
+  }
+
+  removeMovieDetails() : void {
+    localStorage.removeItem(this.localStorageKey);
   }
 }

@@ -1,0 +1,15 @@
+<app-header></app-header>
+<div class="movie-details pl-8 pr-8 flex flex-col gap-6 md:flex-row md:justify-between">
+    <div class="left-item w-[100%] h-[43%] md:w-[45%] md:h-full bg-red-600">
+        <img class="h-full w-full object-cover object-top" [src]="movieDetails.poster_path | image" alt="movie_poster" />
+    </div>
+    <div class="right-items md:w-[50%] md:h-full md:flex md:flex-col md:justify-center">
+        <h3 class="uppercase font-extrabold text-[3.4vw] md:text-lg">Netflix Original</h3>
+        <div class="flex justify-between">
+            <h1 class="movie-title text-[5vw] md:text-3xl font-extrabold uppercase">{{movieDetails.original_title}}</h1>
+            <h1 class="text-[3.8vw] pt-[0.8vw] md:text-xl md:pt-1">{{movieDetails.vote_average}}<i class="ri-star-fill ml-2 text-yellow-600"></i></h1>
+        </div>
+        <p class="text-gray-600 text-[2.8vw] md:text-lg">{{movieDetails.release_date | date}}</p>
+        <p class="text-[3vw] mt-6 md:text-lg">{{movieDetails.overview}}</p>
+    </div>
+</div>

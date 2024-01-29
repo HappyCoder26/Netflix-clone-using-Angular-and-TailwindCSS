@@ -18,8 +18,8 @@
         </div>
         <div class="right-welcome flex items-center gap-4 text-white text-sm">
             <div class="flex items-center">
-                <a class="mr-2 cursor-pointer"><span>Welcome <strong>Happy</strong></span></a>
-                <img class="h-[28px] w-[28px] rounded-full object-cover" src="assets/profile.jpg" alt="">
+                <a class="mr-2 cursor-pointer"><span>Welcome <strong>{{loggedUser?.email | removeAfterAtSymbol}}</strong></span></a>
+                <img class="h-[28px] w-[28px] rounded-full object-cover" src="assets/profile1.png" alt="">
             </div>
             <h5>|</h5>
             <a class="cursor-pointer text-sm" (click)="onSignOut()">Signout</a>

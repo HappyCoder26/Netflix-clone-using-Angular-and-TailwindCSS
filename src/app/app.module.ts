@@ -14,6 +14,8 @@ import { CommonModule } from '@angular/common';
 import { AuthComponent } from './core/components/auth/auth.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoadingSpinnerComponent } from './shared/components/spinner/loading-spinner/loading-spinner.component';
+import { MovieDetailsComponent } from './shared/components/movie-details/movie-details.component';
+import { RemoveAfterAtSymbolPipe } from './shared/Pipes/remove-after-at-symbol.pipe';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { LoadingSpinnerComponent } from './shared/components/spinner/loading-spi
     ImagePipe,
     OverviewPipe,
     AuthComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    MovieDetailsComponent,
+    RemoveAfterAtSymbolPipe
   ],
   imports: [
     BrowserModule,

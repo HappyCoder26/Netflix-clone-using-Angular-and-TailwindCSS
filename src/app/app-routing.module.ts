@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { BrowseComponent } from './pages/browse/browse/browse.component';
 import { AuthComponent } from './core/components/auth/auth.component';
 import { AuthGuard } from './core/services/auth.guard';
+import { MovieDetailsComponent } from './shared/components/movie-details/movie-details.component';
 
 const routes: Routes = [{
   path: '', redirectTo: "/auth", pathMatch: 'full'
@@ -15,6 +16,10 @@ const routes: Routes = [{
   path: "browse",
   component: BrowseComponent,
   canActivate: [AuthGuard]
+},
+{
+  path:"movieDetails",
+  component:MovieDetailsComponent
 }];
 
 @NgModule({

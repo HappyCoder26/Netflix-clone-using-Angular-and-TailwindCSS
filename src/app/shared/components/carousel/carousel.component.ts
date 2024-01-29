@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import Swiper from 'swiper';
 import { videoData } from '../../models/videoData.interface';
 
@@ -13,7 +14,7 @@ export class CarouselComponent implements OnInit, AfterViewInit {
   @Input() movies:videoData[] = [];
   @ViewChild ('swiperContainer') swiperContainer!: ElementRef;
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngAfterViewInit(): void {
     this.initSwiper();
@@ -73,5 +74,10 @@ export class CarouselComponent implements OnInit, AfterViewInit {
       }
     })
   }
+
+  navigateToMovieDetails(movie: any) {
+    console.log('In carousel', movie)
+    this.router.navigate(['/movieDetails'], { state: { movieData: movie } });
+  } 
 
 }
