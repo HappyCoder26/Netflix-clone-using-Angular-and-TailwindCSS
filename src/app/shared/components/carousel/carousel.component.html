@@ -8,8 +8,11 @@
           <div class="img-content relative">
             <img [src]="movie.poster_path | image" alt="movie_poster" />
             <div class="desc p-2">
-              <span class="text-base flex flex-wrap font-bold">{{movie.original_title}}</span>
-              <p class="text-xs my-2 md:my-3">{{movie.overview | overview:100}}</p>
+              <span *ngIf="movie.original_title" class="text-base flex flex-wrap font-bold">{{movie.original_title}}</span>
+              <span *ngIf="movie.original_name" class="text-base flex flex-wrap font-bold">{{movie.original_name}}</span>
+              <p class="text-xs my-2 md:my-3">
+                {{ movie.overview | overview:getCharacterLimit(movie) }}
+              </p>
               <div class="py-3 absolute w-[90%] bottom-1">
                 <p class="text-xs flex justify-between items-center">
                   <span class="text-green-500">Vote Average : {{movie.vote_average}}</span>

@@ -10,7 +10,7 @@ import { MovieService } from 'src/app/shared/services/movie.service';
 })
 export class BrowseComponent implements OnInit {
 
-  randomValue!: number;
+  // randomValue!: number;
 
   movies: videoData[] = [];
   popularMovies: videoData[] = [];
@@ -22,7 +22,6 @@ export class BrowseComponent implements OnInit {
   bannerDetails$ = new Observable<any>();
   bannerVideo$ = new Observable<any>();
   trailerKey = '';
-
 
   source = [
     this.movieService.getMovies(),
@@ -37,14 +36,14 @@ export class BrowseComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.randomValue = Math.floor(Math.random() * 20);
-    console.log(this.randomValue);
+    // this.randomValue = Math.floor(Math.random() * 20);
+    // console.log(this.randomValue);
 
     forkJoin(this.source)
       .pipe(
         map(([movies, popularMovies, nowPlayingMovies, tvShows, upcomingMovies, topRatedMovies]) => {
-          this.bannerDetails$ = this.movieService.getBannerDetail(popularMovies.results[this.randomValue].id)
-          this.bannerVideo$ = this.movieService.getBannerVideo(popularMovies.results[this.randomValue].id)
+          this.bannerDetails$ = this.movieService.getBannerDetail(popularMovies.results[0].id)
+          this.bannerVideo$ = this.movieService.getBannerVideo(popularMovies.results[0].id)
           this.getTrailerKey();
           return { movies, popularMovies, nowPlayingMovies, tvShows, upcomingMovies, topRatedMovies }
         }),
@@ -55,7 +54,7 @@ export class BrowseComponent implements OnInit {
         this.tvShows = res.tvShows.results as videoData[];
         this.upcomingMovies = res.upcomingMovies.results as videoData[];
         this.topRatedMovies = res.topRatedMovies.results as videoData[];
-        console.log(this.popularMovies)
+        console.log(this.tvShows)
       })
   }
 

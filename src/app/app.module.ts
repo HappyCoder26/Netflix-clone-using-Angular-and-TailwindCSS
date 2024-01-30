@@ -16,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoadingSpinnerComponent } from './shared/components/spinner/loading-spinner/loading-spinner.component';
 import { MovieDetailsComponent } from './shared/components/movie-details/movie-details.component';
 import { RemoveAfterAtSymbolPipe } from './shared/Pipes/remove-after-at-symbol.pipe';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 @NgModule({
@@ -40,7 +41,7 @@ import { RemoveAfterAtSymbolPipe } from './shared/Pipes/remove-after-at-symbol.p
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -45,34 +45,45 @@ export class CarouselComponent implements OnInit, AfterViewInit {
           slidesPerGroup: 2,
           spaceBetween: 5,
           centeredSlides: false,
+          loop: false
         },
         900: {
           slidesPerView: 3,
           slidesPerGroup: 3,
           spaceBetween: 5,
           centeredSlides: false,
-          loop: true
+          loop: false
         },
         1200: {
           slidesPerView: 4,
           slidesPerGroup: 4,
           spaceBetween: 10,
           centeredSlides: false,
+          loop:false
         },
         1500: {
           slidesPerView: 5,
           slidesPerGroup: 5,
           spaceBetween: 10,
           centeredSlides: false,
+          loop: false
         },
         1800: {
           slidesPerView: 5,
           slidesPerGroup: 6,
           spaceBetween: 10,
           centeredSlides: false,
+          loop: false
         }
       }
     })
+  }
+
+  getCharacterLimit(movie: any): number {
+    if (movie && (movie.original_title || movie.original_name)) {
+      return (movie.original_title?.length > 18 || movie.original_name?.length > 18) ? 80 : 120;
+    }
+    return 115; // Default character limit if movie or its properties are null or undefined
   }
 
   navigateToMovieDetails(movie: any) {
