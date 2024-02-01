@@ -10,7 +10,8 @@
             <h1 class="text-4xl font-semibold">{{isLoginMode ? 'Sign In' : 'Sign
                 Up'}}</h1>
             <form [formGroup]="loginSignup" class="inputs flex flex-col gap-4">
-                <div *ngIf="error" class="w-[100%] py-3 rounded-md px-5 text-white text-[15px] font-normal bg-[#e87c03]">
+                <div *ngIf="error"
+                    class="w-[100%] py-3 rounded-md px-5 text-white text-[15px] font-normal bg-[#e87c03]">
                     {{error}}
                 </div>
                 <div>
@@ -39,8 +40,10 @@
                 </div>
             </form>
             <div>
-                <button *ngIf="isLoading" (click)="onSubmit()" class="w-[100%] py-3 rounded-md flex justify-center items-center bg-[#e50914]"><app-loading-spinner></app-loading-spinner></button>
-                <button *ngIf="!isLoading" (click)="onSubmit()" class="w-[100%] py-3 rounded-md bg-[#e50914]">{{isLoginMode ? 'Sign In' :
+                <button *ngIf="isLoading" (click)="onSubmit()"
+                    class="w-[100%] py-3 rounded-md flex justify-center items-center bg-[#e50914]"><app-loading-spinner></app-loading-spinner></button>
+                <button *ngIf="!isLoading" (click)="onSubmit()"
+                    class="w-[100%] py-3 rounded-md bg-[#e50914]">{{isLoginMode ? 'Sign In' :
                     'Sign
                     Up'}}</button>
                 <div class="flex justify-end mt-3">
@@ -49,18 +52,26 @@
             </div>
         </div>
 
-        <div class="form-footer text-[#737373] flex flex-col gap-3 p-[5vw] pb-[18vw] border-b border-white-500 md:text-white md:m-0 md:p-0 md:pb-0 md:border-none">
-            <h2 class="text-base font-light -tracking-tighter">New to Netflix?<a (click)="switchMode()"
+        <div
+            class="form-footer text-[#737373] flex flex-col gap-3 p-[5vw] pb-[18vw] border-b border-white-500 md:text-white md:m-0 md:p-0 md:pb-0 md:border-none">
+            <h2 *ngIf="isLoginMode" class="text-base font-light -tracking-tighter">New to Netflix?<a (click)="switchMode()"
                     class="font-medium pl-1 hover:cursor-pointer hover:underline">{{isLoginMode ? 'Sign up' : 'Sign
                     in'}}
-                    now.</a></h2>
+                    now.</a>
+            </h2>
+            <h2 *ngIf="!isLoginMode"  class="text-base font-light -tracking-tighter">Existing user?<a (click)="switchMode()"
+                    class="font-medium pl-1 hover:cursor-pointer hover:underline">{{isLoginMode ? 'Sign up' : 'Sign
+                    in'}}
+                    now.</a>
+            </h2>
             <p class="font-light text-sm">This page is protected by Google reCAPTCHA to ensure you're not a bot. <a
-                     class="text-[#0071eb] cursor-pointer font-medium hover:underline">Learn more.</a></p>
+                    class="text-[#0071eb] cursor-pointer font-medium hover:underline">Learn more.</a></p>
         </div>
 
     </div>
 
-    <div class="footer block bg-black p-[5vw] h-[35vh] w-[100%] md:h-[230px] md:absolute md:bottom-0 md:left-0 md:p-0 md:pt-14 md:px-40 md:opacity-80">
+    <div
+        class="footer block bg-black p-[5vw] h-[35vh] w-[100%] md:h-[230px] md:absolute md:bottom-0 md:left-0 md:p-0 md:pt-14 md:px-40 md:opacity-80">
         <div class="helpline mb-5 text-[#737373] md:text-white">
             <p>Questions? Call <a class="hover:underline" href="#">000-800-919-1694</a></p>
         </div>
