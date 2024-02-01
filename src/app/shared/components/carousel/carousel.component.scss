@@ -54,11 +54,16 @@
 
   .swiper-slide img {
     width: 100%;
+    height: 340px !important;
   }
 
   .swiper-button-next,
   .swiper-button-prev {
     display: none;
+  }
+
+  .desc {
+    height: 155px;
   }
 }
 

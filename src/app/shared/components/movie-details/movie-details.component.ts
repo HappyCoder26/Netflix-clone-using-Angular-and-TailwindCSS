@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { MovieService } from '../../services/movie.service';
 
 @Component({
@@ -11,15 +11,15 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
   movieDetails:any;
 
   constructor(private route:Router, private movieService:MovieService) {
-    let movieData = this.route.getCurrentNavigation()?.extras.state?.['movieData'];
-    if(!movieData)
-    {
-      this.movieDetails = this.movieService.getMovieDetails();
-    }
-    else
-    {
-      this.movieService.setMovieDetails(movieData);
-    }
+    // let movieData = this.route.getCurrentNavigation()?.extras.state?.['movieData'];
+    // if(!movieData)
+    // {
+    //   this.movieDetails = this.movieService.getMovieDetails();
+    // }
+    // else
+    // {
+    //   this.movieService.setMovieDetails(movieData);
+    // }
    }
 
   ngOnInit(): void {

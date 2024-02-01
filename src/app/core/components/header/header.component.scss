@@ -1,0 +1,21 @@
+.menu-small-screen {
+    cursor: pointer;
+  }
+  
+  .menu-dialog {
+    position: absolute;
+    top: 80%;
+    right: 0;
+    background-color: black;
+    color:white;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: fit-content;
+    padding: 10px 10px;
+    display: none;
+  }
+  
+  .menu-dialog button {
+    cursor: pointer;
+  }

@@ -10,19 +10,19 @@ import { User } from '../auth/user.model';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
-  loggedUser!:User | null;
+  loggedUser!: User | null;
   private userSubscription!: Subscription;
 
-  links:string[] = ['Home', 'TV Shows', 'News & Popular', 'My List', 'Browse by Language']
+  links: string[] = ['Home', 'TV Shows', 'News & Popular', 'My List', 'Browse by Language']
 
-  constructor(private authService:AuthServiceService) { }
+  constructor(private authService: AuthServiceService) { }
 
   ngOnInit(): void {
     this.userSubscription = this.authService.user.subscribe((value) => {
       // Handle the emitted value here
       this.loggedUser = value;
     });
-    
+
   }
 
   onSignOut() {
@@ -33,6 +33,18 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.userSubscription.unsubscribe();
   }
 
-  
+  toggleMenu(): void {
+    const menuDialog = document.getElementById('menuDialog');
+    if (menuDialog) {
+      menuDialog.style.display = menuDialog.style.display === 'none' ? 'block' : 'none';
+    }
+  }
 
+  logout() {
+    const menuDialog = document.getElementById('menuDialog');
+    if (menuDialog) {
+      menuDialog.style.display = 'none';
+      this.onSignOut();
+    }
+  }
 }

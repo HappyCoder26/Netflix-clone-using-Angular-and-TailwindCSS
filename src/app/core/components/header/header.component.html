@@ -6,8 +6,14 @@
         </div>
     </div>
 
-    <div class="menu-small-screen text-lg text-white flex items-center lg:hidden">
-        <i class="ri-menu-3-fill"></i>
+    <div class="relative flex items-center lg:hidden">
+        <div (click)="toggleMenu()" class="menu-small-screen text-lg text-white">
+            <i class="ri-menu-3-fill"></i>
+        </div>
+    
+        <div id="menuDialog" class="menu-dialog" style="display: none;">
+            <button class="text-base" (click)="logout()">Signout</button>
+        </div>
     </div>
 
     <div class="right-links hidden lg:flex items-center gap-4">

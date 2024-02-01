@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { map, Observable, take } from 'rxjs';
 import { AuthServiceService } from './auth-service.service';
+import { MovieService } from 'src/app/shared/services/movie.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private authService:AuthServiceService, private router:Router){
+  constructor(private authService:AuthServiceService, private router:Router, private movieService:MovieService){
   
   }
   canActivate(
@@ -24,7 +25,17 @@ export class AuthGuard implements CanActivate {
           {
             return this.router.createUrlTree(['/browse']);
           }
-          return true;
+          else if(url.includes('/movieDetails'))
+          {
+            if (this.movieService.getMovieDetails())
+            {
+              return true;
+            }
+            else {
+              return this.router.createUrlTree(['/browse']);
+            }
+          }
+          return true;  
         }
         else {
           if(url.includes('/auth'))
